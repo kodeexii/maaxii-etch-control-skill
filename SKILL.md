@@ -10,41 +10,36 @@ Use this skill when the user asks to build, update, or manage WordPress pages us
 ## 0. Prerequisites (Mandatory Check)
 
 Before executing any tasks, the AI Agent must verify:
-1. **Plugin Active**: `MaaXII Etch Control` (v1.0.0+) must be installed and active on the WordPress site.
+1. **Plugin Active**: `MaaXII Etch Control` (v1.0.14+) must be installed and active.
 2. **Connectivity**: Call `mcp-adapter-discover-abilities` to confirm `maaxii/*` tools are available.
-3. **Infrastructure**: `mcp-adapter` and `Abilities API` must be running in the WordPress environment.
-4. **Etch Page Builder**: Must be active for block rendering.
-5. **Automatic CSS (ACSS)**: **Recommended but NOT required.** 
-   - *Note: If ACSS is missing, the content, structure, and CSS classes will still be generated correctly, but the visual styling (variables for spacing/colors) will not be applied as intended.*
+3. **Environment**: Etch Page Builder must be active. Automatic CSS (ACSS) is recommended for full styling support.
 
-*Note: If abilities are not found, prompt the user to deactivate and reactivate the MaaXII Etch Control plugin.*
+## 1. Core Mandates (STABILITY FIRST)
 
-## 1. Core Mandates
-
-- **Abilities First**: Always use `maaxii/build-etch-page` or `maaxii/append-etch-section` to modify pages.
-- **Blueprint JSON**: Never send raw HTML. Always generate a structured Blueprint JSON.
-- **Etch Hierarchy**: Follow the mandatory structure: `Section > Container > [Elements]`.
-- **BEM Standard**: Use Class-first approach. Every element must have a BEM class.
-- **ACSS Integration**: Use Automatic CSS variables (if ACSS is present).
+- **Blueprint JSON**: Never send raw HTML. Always use the structured Blueprint JSON.
+- **DATA INTEGRITY (CRITICAL)**: NEVER use PowerShell variables or `ConvertTo-Json` to pipe data to the API. It corrupts the object structure (e.g., converting objects to strings like `@{metadata=...}`).
+- **FILE-BASED DELIVERY**: ALWAYS write your blueprint to a temporary file (e.g., `payload.json`) and use `curl.exe -d "@payload.json"` to ensure the JSON reaches the server exactly as written.
+- **DNA MATCHING**: Every element in the blueprint MUST have a `"styles": []` array (even if empty) to satisfy Etch rendering requirements.
+- **SIMPLE HIERARCHY**: Prefer clean text nodes inside tags. Avoid deep nesting like `h1 > span > text` unless necessary for complex styling.
 
 ## 2. Technical Workflow
 
-1.  **Analyze Content**: Break down the user's copywriting into logical sections.
-2.  **Map to BEM**: Define block names (e.g., `hero-section`, `strategy-grid`).
-3.  **Generate Blueprint**:
+1.  **Analyze Content**: Break down the user's copywriting into sections.
+2.  **Generate Blueprint**:
     - Assign `etch-section-style` to sections.
     - Assign `etch-container-style` to containers.
-    - Place content in `children`.
-4.  **Execute**: Call the `maaxii/build-etch-page` ability.
+    - Ensure every node has `tag`, `styles`, `attrs`, and `children` (or `text`).
+3.  **Deploy**:
+    - Write to `payload.json`.
+    - Run: `curl.exe -X POST -u "USER:PASS" -H "Content-Type: application/json" -d "@payload.json" https://.../run`
 
 ## 3. Reference Material
 
-- **Design Standards**: Refer to `references/gemini-standards.md`.
-- **Example Blueprint**: Refer to `references/example-blueprint.json`.
-- **Plugin Manual**: Refer to `references/plugin-readme.md`.
+- **BEM/ACSS**: Refer to `references/gemini-standards.md`.
+- **JSON Format**: Refer to `references/example-blueprint.json`.
+- **Manual**: Refer to `references/plugin-readme.md`.
 
-## 4. Troubleshooting for AI
+## 4. Troubleshooting
 
-- If "Ability not found", ask the user to deactivate and reactivate the plugin.
-- If styles aren't appearing, ensure the class is included in the `attrs` of the node.
-- Always ensure special characters in JSON are correctly escaped.
+- **"@@" or Missing Text**: Usually caused by incorrect `innerContent` whitespace or missing `styles` array in JSON.
+- **Empty Elements**: Check if `attrs` was correctly mapped to `attributes` in the payload.
