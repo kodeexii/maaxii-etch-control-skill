@@ -1,0 +1,22 @@
+{
+  "title": "Example Page",
+  "layout": [
+    {
+      "tag": "section",
+      "name": "Hero",
+      "styles": ["etch-section-style"],
+      "attrs": { "class": "hero-section" },
+      "children": [
+        {
+          "tag": "div",
+          "name": "Wrapper",
+          "styles": ["etch-container-style"],
+          "attrs": { "class": "hero-section__wrapper" },
+          "children": [
+            { "tag": "h1", "attrs": { "class": "hero-section__heading" }, "children": [{ "text": "Hello World" }] }
+          ]
+        }
+      ]
+    }
+  ]
+}
