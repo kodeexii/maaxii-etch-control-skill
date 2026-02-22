@@ -27,21 +27,21 @@ Before executing any tasks, the AI Agent must verify:
 
 ## 2. MaaXII Page Building SOP (Platinum Workflow)
 
-1. **Pembinaan Kandungan (Content First)**
+1. **Content Creation (Verbatim Mandate)**
    - **Verbatim Mandate**: Copy 100% of source content (Markdown). NEVER summarize or shorten.
    - **Checklist**: Ensure Story, Bridge, and FAQ blocks are complete.
 
-2. **Pembinaan Wireframe (Structure Check)**
+2. **Wireframe Construction (Structure Check)**
    - **No Styling**: Focus purely on HTML hierarchy (Section > Container > Elements).
    - **Etch DNA**: Use `data-etch-element` attributes correctly to verify layout flow.
 
-3. **Pembinaan Design & Visual (Local Prototypes)**
+3. **Design & Visual Implementation (Local Prototypes)**
    - **Local HTMLs**: Develop styling and image integration in a local `.html` file first.
    - **WebP & Local Media**: Download images as WebP, upload to server, and use local URLs.
    - **Class-First (Common Classes)**: Use descriptive, reusable class names (e.g., `.strategy-card`). No inline styles.
-   - **SEO**: descriptive `alt` tags are mandatory.
+   - **SEO**: Descriptive `alt` tags are mandatory.
 
-4. **Pembinaan Page Proper (Server Deployment)**
+4. **Server Deployment & Validation (Proper Page Building)**
    - **1:1 Mirroring**: Translate local HTML structure exactly into Blueprint JSON layout.
    - **Data Integrity**: ALWAYS write JSON to a file and use `curl.exe -d "@file.json"`.
    - **Pseudo Registration**: Register `:hover`, `::after`, etc., as separate style entries.
