@@ -22,6 +22,7 @@ Before executing any tasks, the AI Agent must verify:
 - **CLASS-FIRST (NO INLINE STYLES)**: Never use the `style` attribute in HTML layout nodes. All styles must be moved to the `styles` object to register clean CSS classes in Etch.
 - **HOVER LOGIC**: Hover effects must be registered as separate style entries (e.g., `.serviswp-card:hover`) and added to the element's `styles` array.
 - **LOCAL MEDIA ONLY**: External images (Unsplash, etc.) must be downloaded to the server and imported into the Media Library using `wp media import` before being linked in the blueprint.
+- **SEO & ACCESSIBILITY (ALT TEXT)**: Every `img` tag MUST have a descriptive `alt` attribute. This is mandatory for SEO indexing and screen reader accessibility.
 - **DNA MATCHING**: Every element in the blueprint MUST have a `"styles": []` array (even if empty) to satisfy Etch rendering requirements.
 
 ## 2. Technical Workflow
