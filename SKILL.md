@@ -14,13 +14,15 @@ Before executing any tasks, the AI Agent must verify:
 2. **Connectivity**: Call `mcp-adapter-discover-abilities` to confirm `maaxii/*` tools are available.
 3. **Environment**: Etch Page Builder must be active. Automatic CSS (ACSS) is recommended for full styling support.
 
-## 1. Core Mandates (STABILITY FIRST)
+## 1. Core Mandates (STABILITY & QUALITY FIRST)
 
-- **Blueprint JSON**: Never send raw HTML. Always use the structured Blueprint JSON.
-- **DATA INTEGRITY (CRITICAL)**: NEVER use PowerShell variables or `ConvertTo-Json` to pipe data to the API. It corrupts the object structure (e.g., converting objects to strings like `@{metadata=...}`).
-- **FILE-BASED DELIVERY**: ALWAYS write your blueprint to a temporary file (e.g., `payload.json`) and use `curl.exe -d "@payload.json"` to ensure the JSON reaches the server exactly as written.
+- **VERBATIM CONTENT (ABSOLUTE)**: Never summarize or shorten source content (Markdown). Every word of story, bridge, intro, and FAQ must be copied 100% exactly as provided.
+- **DATA INTEGRITY (CRITICAL)**: NEVER use PowerShell variables or `ConvertTo-Json` to pipe data to the API. It corrupts data (e.g., converting @layer to filename). ALWAYS write to a physical `.json` file and use `curl.exe -d "@file.json"`.
+- **SHARED UI STANDARD**: Use the prefix `serviswp-` for all shared service components (e.g., `.serviswp-hero`, `.serviswp-strategy-card`). Avoid page-specific prefixes unless the component is unique.
+- **CLASS-FIRST (NO INLINE STYLES)**: Never use the `style` attribute in HTML layout nodes. All styles must be moved to the `styles` object to register clean CSS classes in Etch.
+- **HOVER LOGIC**: Hover effects must be registered as separate style entries (e.g., `.serviswp-card:hover`) and added to the element's `styles` array.
+- **LOCAL MEDIA ONLY**: External images (Unsplash, etc.) must be downloaded to the server and imported into the Media Library using `wp media import` before being linked in the blueprint.
 - **DNA MATCHING**: Every element in the blueprint MUST have a `"styles": []` array (even if empty) to satisfy Etch rendering requirements.
-- **SIMPLE HIERARCHY**: Prefer clean text nodes inside tags. Avoid deep nesting like `h1 > span > text` unless necessary for complex styling.
 
 ## 2. Technical Workflow
 
