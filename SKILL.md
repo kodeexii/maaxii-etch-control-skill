@@ -25,16 +25,27 @@ Before executing any tasks, the AI Agent must verify:
 - **SEO & ACCESSIBILITY (ALT TEXT)**: Every `img` tag MUST have a descriptive `alt` attribute. This is mandatory for SEO indexing and screen reader accessibility.
 - **DNA MATCHING**: Every element in the blueprint MUST have a `"styles": []` array (even if empty) to satisfy Etch rendering requirements.
 
-## 2. Technical Workflow
+## 2. MaaXII Page Building SOP (Platinum Workflow)
 
-1.  **Analyze Content**: Break down the user's copywriting into sections.
-2.  **Generate Blueprint**:
-    - Assign `etch-section-style` to sections.
-    - Assign `etch-container-style` to containers.
-    - Ensure every node has `tag`, `styles`, `attrs`, and `children` (or `text`).
-3.  **Deploy**:
-    - Write to `payload.json`.
-    - Run: `curl.exe -X POST -u "USER:PASS" -H "Content-Type: application/json" -d "@payload.json" https://.../run`
+1. **Pembinaan Kandungan (Content First)**
+   - **Verbatim Mandate**: Copy 100% of source content (Markdown). NEVER summarize or shorten.
+   - **Checklist**: Ensure Story, Bridge, and FAQ blocks are complete.
+
+2. **Pembinaan Wireframe (Structure Check)**
+   - **No Styling**: Focus purely on HTML hierarchy (Section > Container > Elements).
+   - **Etch DNA**: Use `data-etch-element` attributes correctly to verify layout flow.
+
+3. **Pembinaan Design & Visual (Local Prototypes)**
+   - **Local HTMLs**: Develop styling and image integration in a local `.html` file first.
+   - **WebP & Local Media**: Download images as WebP, upload to server, and use local URLs.
+   - **Class-First (Common Classes)**: Use descriptive, reusable class names (e.g., `.strategy-card`). No inline styles.
+   - **SEO**: descriptive `alt` tags are mandatory.
+
+4. **Pembinaan Page Proper (Server Deployment)**
+   - **1:1 Mirroring**: Translate local HTML structure exactly into Blueprint JSON layout.
+   - **Data Integrity**: ALWAYS write JSON to a file and use `curl.exe -d "@file.json"`.
+   - **Pseudo Registration**: Register `:hover`, `::after`, etc., as separate style entries.
+   - **Validation**: Final visual check on server to ensure side-by-side layouts and contrast.
 
 ## 3. Reference Material
 
