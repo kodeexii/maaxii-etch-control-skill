@@ -28,8 +28,8 @@ Before executing any tasks, the AI Agent must verify:
 ## 2. MaaXII Page Building SOP (Platinum Workflow)
 
 1. **Content Creation (Verbatim Mandate)**
-   - **Pre-flight Check**: ALWAYS verify if a source Markdown file exists in the `ServisWP/` directory.
-   - **If Missing**: YOU MUST create the Markdown content first using the standard MaaXII structure (Hero, Pain Points, Strategy, Pillars, Process, FAQ, CTA).
+   - **Pre-flight Check**: ALWAYS verify if a source Markdown file exists in the specific project directory (e.g., `ServisWP/`, `harumanis/`, `LaLega/`).
+   - **If Missing**: YOU MUST create the specific project folder and the Markdown content first using the standard MaaXII structure (Hero, Pain Points, Strategy, Pillars, Process, FAQ, CTA).
    - **Verbatim Mandate**: Copy 100% of source content. NEVER summarize or shorten.
 
 2. **Wireframe Construction (Structure Check)**
