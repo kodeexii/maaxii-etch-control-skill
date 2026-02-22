@@ -21,7 +21,7 @@ Before executing any tasks, the AI Agent must verify:
 - **SHARED UI STANDARD**: Use the prefix `serviswp-` for all shared service components (e.g., `.serviswp-hero`, `.serviswp-strategy-card`). Avoid page-specific prefixes unless the component is unique.
 - **CLASS-FIRST (NO INLINE STYLES)**: Never use the `style` attribute in HTML layout nodes. All styles must be moved to the `styles` object to register clean CSS classes in Etch.
 - **HOVER LOGIC**: Hover effects must be registered as separate style entries (e.g., `.serviswp-card:hover`) and added to the element's `styles` array.
-- **LOCAL MEDIA ONLY**: External images (Unsplash, etc.) must be downloaded to the server and imported into the Media Library using `wp media import` before being linked in the blueprint.
+- **LOCAL MEDIA & WEBP FIRST**: External images (Unsplash, etc.) MUST be downloaded to the server and imported into the Media Library using `wp media import` before being linked. Crucially, images MUST be in **WebP format** (e.g., use Unsplash `fm=webp` parameter) to ensure high performance since browser-level optimizers (like CIMO) are bypassed via API/CLI.
 - **SEO & ACCESSIBILITY (ALT TEXT)**: Every `img` tag MUST have a descriptive `alt` attribute. This is mandatory for SEO indexing and screen reader accessibility.
 - **DNA MATCHING**: Every element in the blueprint MUST have a `"styles": []` array (even if empty) to satisfy Etch rendering requirements.
 
