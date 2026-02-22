@@ -29,8 +29,8 @@ Before executing any tasks, the AI Agent must verify:
 
 1. **Content Creation (Verbatim Mandate)**
    - **Pre-flight Check**: ALWAYS verify if a source Markdown file exists in the specific project directory (e.g., `ServisWP/`, `harumanis/`, `LaLega/`).
-   - **If Missing**: YOU MUST create the specific project folder and the Markdown content first using the standard MaaXII structure (Hero, Pain Points, Strategy, Pillars, Process, FAQ, CTA).
-   - **Verbatim Mandate**: Copy 100% of source content. NEVER summarize or shorten.
+   - **If Missing**: YOU MUST create the project folder and the Markdown content first. The structure should be logical and tailored to the specific product/project requirements.
+   - **Verbatim Mandate**: Once the structure is defined in Markdown, you MUST copy 100% of that content during construction. NEVER summarize or omit sections defined in the source.
 
 2. **Wireframe Construction (Structure Check)**
    - **No Styling**: Focus purely on HTML hierarchy (Section > Container > Elements).
